@@ -1,0 +1,13 @@
+# Ignore compiled executables
+Linked_Lists/1_Traversal
+Linked_Lists/2_Insertion
+Linked_Lists/3_InsertAtIndex
+Linked_Lists/4_InsertAtEnd
+Linked_Lists/5_InsertAfterNode
+Linked_Lists/6_General_case
+Linked_Lists/7_Deletion
+Linked_Lists/8_Circular_LL
+Linked_Lists/9_Circular_LL_Insertion
+Linked_Lists/10_Doubly_LL
+Linked_Lists/11_Doubly_LL_Insertion
+Linked_Lists/12_Doubly_LL_Deletion
