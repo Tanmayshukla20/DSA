@@ -62,23 +62,47 @@ char pop(struct stack*ptr)
         }
     }
 
-    //Paranthesis Match
+    //Stack Top    
+    char stackTop(struct stack*sp){
+    return sp->arr[sp->top];
+    }
+
+    int match(char a, char b){
+        if (a=='(' && b==')'){
+            return 1;
+        }
+        if (a=='{' && b=='}'){
+            return 1;
+        }
+        if (a=='[' && b==']'){
+            return 1;
+        }
+        return 0;
+    }
+
+    //Multi Paranthesis Match
 int paranthesisMatch(char *exp)
 {
+    //create and initialize the stack 
     struct stack*sp;
     sp->size = 100;
     sp -> top = -1; //empty stack 
     sp -> arr = (char *)malloc(sp->size * sizeof(char));
+    char popped_ch;
 
     for (int i = 0; exp[i]!='\0'; i++)
     {
-        if (exp[i]=='(')
+        if (exp[i]=='(' || exp[i]=='{' || exp[i]=='[')
         {
-            push(sp, '(');
+            push(sp, exp[i]);
         }
-        else if (exp[i]==')')
+        else if (exp[i]==')' || exp[i]=='}' || exp[i]==']')
         {
             if (isEmpty(sp)){
+                return 0;
+            }
+            popped_ch = pop (sp);
+            if(!match(popped_ch, exp[i])){
                 return 0;
             }
             else{
@@ -91,13 +115,13 @@ int paranthesisMatch(char *exp)
 
 int main(){
 
-    char * exp = " 6*(9)+4 ";
+    char * exp = "[((8){(9-]8)}))";
     if(paranthesisMatch(exp)){
-        printf("The paranthesis is matching\n");
+        printf("The paranthesis is balanced\n");
     }
     else
     {
-        printf("The paranthesis is not matching\n");
+        printf("The paranthesis is not balanced\n");
     }
    return 0; 
 }
