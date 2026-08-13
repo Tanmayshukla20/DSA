@@ -75,7 +75,7 @@ int pop(struct Node *tp)
 
     else
     {
-        struct Node* n = tp;
+        struct Node* n = tp; 
         top =  (tp)->next;
         int x = n->data;
         free(n);
