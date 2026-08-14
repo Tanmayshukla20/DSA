@@ -47,7 +47,9 @@ int isFull(struct Node* top)
 }
 
 //Push
-struct Node*  push(struct Node*top, int x)
+struct Node*  push(struct Node*top, int x) 
+//Or struct Node*  push(int x) as struct Node* top is already a global variable so it wall already take it
+//same goes with all other functions as well as for queue using linked list also.
 {
     if (isFull(top)) {
         printf( "Stack Overflow\n");
@@ -86,7 +88,7 @@ int pop(struct Node *tp)
 int main()
 {
     
-    top = push(top, 78);
+    top = push(top, 78); //Or top = push(78)struct Node* top is already a global variable so it wall already take it
     top = push(top, 7);
     top = push(top, 21);
 
