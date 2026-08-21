@@ -26,22 +26,39 @@ void inOrder(struct node* root){
     }
 }
 
+int isBST(struct node* root){
+    static struct node* prev = NULL;
+    if(root != NULL){
+        if(! isBST(root->left)){
+            return 0;
+        }
+        if(prev!= NULL && root->data <= prev->data){
+            return 0;
+        }
+        prev = root;
+        return isBST(root->right);
+    }
+    else 
+    return 1;
+}
+
+
 int main()
 {
 // Constructing the root node - Using Functions
-struct node *p = createNode(4);
-struct node *p1 = createNode(1);
+struct node *p = createNode(5);
+struct node *p1 = createNode(3);
 struct node *p2 = createNode(6);
-struct node *p3 = createNode(5);
-struct node *p4 = createNode(2);
+struct node *p3 = createNode(1);
+struct node *p4 = createNode(4);
 
 /* Finally The tree looks like this:
 
-          4
+          5
         /   \
-       1     6
+       3     6
       / \ 
-     5   2
+     1   4
     
  */    
 
@@ -52,6 +69,12 @@ p1->left = p3;
 p1->right = p4;
 
 inOrder(p);
+printf("\n");
+//printf("%d",isBST(p) );
+if (isBST(p))
+    printf("Is BST");
+else
+    printf("Not a BST");
 
     return 0;
 }
